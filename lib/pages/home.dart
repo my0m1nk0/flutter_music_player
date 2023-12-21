@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:music_player/const/colors.dart';
 import 'package:music_player/controllers/player_controller.dart';
+import 'package:music_player/pages/player.dart';
 import 'package:on_audio_query/on_audio_query.dart';
 
 class Home extends StatelessWidget {
@@ -122,6 +123,8 @@ class Home extends StatelessWidget {
                           trailing: controller.playIndex.value == index && controller.isPlaying.value ? const Icon(Icons.play_arrow,color: whiteColor,size: 26,)
                           : null ,
                           onTap: (){
+                            Get.to(()=> Player(data: snapshot.data!,),
+                            transition: Transition.downToUp);
                             controller.playSong(snapshot.data![index].uri,index);
                           },
                         ),
